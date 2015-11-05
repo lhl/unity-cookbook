@@ -16,6 +16,7 @@
 # Temp Files
 *.*~
 *.sw[pon]
+.vs
 
 #Unity3D Generated File On Crash Reports
 sysinfo.txt
