@@ -20,8 +20,10 @@ limitations under the License.
 ************************************************************************************/
 
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Assertions;
 
 /// <summary>
 /// Cross-platform wrapper for Unity Input.
@@ -288,6 +290,10 @@ public static class OVRInputControl
 	/// </summary>
 	static OVRInputControl()
 	{
+		Debug.Log("OVRInputControl has been deprecated and will be removed in a future release. Please migrate to OVRInput. "
+				+ "Refer to the documentation here for more information: "
+				+ "https://developer.oculus.com/documentation/game-engines/latest/concepts/unity-ovrinput/");
+
 #if UNITY_ANDROID && !UNITY_EDITOR
 		OVRGamepadController.SetReadAxisDelegate(ReadJoystickAxis);
 		OVRGamepadController.SetReadButtonDelegate(ReadJoystickButton);
@@ -516,7 +522,7 @@ public static class OVRInputControl
 			InputMapping im = inputMap[i];
 			if (im.component == comp && im.joystickNumber == joystickNumber)
 			{
-				OVRDebugUtils.Assert(false, "Input mapping already exists!");
+				Assert.IsTrue(false, "Input mapping already exists!");
 				return;
 			}
 		}
