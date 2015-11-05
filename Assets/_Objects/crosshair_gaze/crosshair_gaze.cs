@@ -6,6 +6,8 @@ public class crosshair_gaze : MonoBehaviour
     public float offsetFromObjects = 0.1f;
     public float fixedDepth = 3.0f;
     public OVRCameraRig cameraController = null;
+    public GameObject beam = null;
+    public Vector3 beam_offset;
 
     private Transform thisTransform = null;
     private Material crosshairMaterial = null;
@@ -60,5 +62,14 @@ public class crosshair_gaze : MonoBehaviour
             thisTransform.position = hit.point + (-cameraForward * offsetFromObjects);
             thisTransform.forward = -cameraForward;
         }
+
+        // If we have a beam object, then let's try to project it
+        if(beam)
+        {
+            beam.transform.position = cameraPosition + beam_offset;
+            Ray beam_ray = new Ray(beam.transform.position, thisTransform.position);
+            beam.transform.up = beam_ray.direction;
+        }
+
     }
 }
