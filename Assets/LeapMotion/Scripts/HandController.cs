@@ -477,6 +477,8 @@ public class HandController : MonoBehaviour {
             info = new LeapDeviceInfo(LeapDeviceType.Dragonfly);
             break;
           default:
+            // fix: https://community.leapmotion.com/t/quick-fix-for-unity-vr-developers/4322
+            info = new LeapDeviceInfo(LeapDeviceType.Peripheral);
             break;
         }
       }
