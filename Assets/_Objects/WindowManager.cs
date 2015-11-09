@@ -214,8 +214,11 @@ public class WindowManager : MonoBehaviour
     void keyboardCommands()
     {
 
+        // TODO: LeftControl is *not* a happy camper - obviously some events are interfering w/ each other...
+        // For now changing Recenter to F2
+
         // Recenter
-        if (Input.GetKeyUp("r") && Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKeyUp(KeyCode.F2))
         {
             UnityEngine.VR.InputTracking.Recenter();
         }
@@ -274,6 +277,14 @@ public class WindowManager : MonoBehaviour
                 selected = null;
             }
         }
+
+        // Screenshot
+        // Quit
+        else if (Input.GetKeyUp(KeyCode.F1))
+        {
+            Application.CaptureScreenshot("vrwm." + (System.DateTime.UtcNow - new System.DateTime(1970, 1, 1)).TotalSeconds + ".png");
+        }
+
 
         // Quit
         else if (Input.GetKeyUp("q") && Input.GetKey(KeyCode.LeftAlt))
