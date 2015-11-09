@@ -303,9 +303,11 @@ public class LeapCameraAlignment : MonoBehaviour {
       }
     }
     
+    /*
     if (Input.GetKeyDown (recenter)) {
       InputTracking.Recenter();
     }
+    */
   }
 
   /// <summary>
