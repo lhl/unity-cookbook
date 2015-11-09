@@ -160,9 +160,10 @@ public class WindowManager : MonoBehaviour
             gazeCursor.transform.forward = -center.transform.forward;
 
             // This is a hack but WTH - if nothing focused, focus on the window you're looking at
-            if(!focused)
+            if(true || !focused)
             {
                 focused = hit.collider.gameObject;
+                focusWindow(focused);
             }
         }
         else
